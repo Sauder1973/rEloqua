@@ -101,26 +101,30 @@ eloquaActivities <- list(
     "EmailSendType" =  "{{Activity.Field(EmailSendType)}}"
   ),
 
-  EmailClick = list(
-    "ActivityId" =  "{{Activity.Id}}",
-    "ActivityType" =  "{{Activity.Type}}",
-    "ActivityDate" =  "{{Activity.CreatedAt}}",
-    "EmailAddress" =  "{{Activity.Field(EmailAddress)}}",
-    "ContactId" =  "{{Activity.Contact.Id}}",
-    "IpAddress" =  "{{Activity.Field(IpAddress)}}",
-    "VisitorId" =  "{{Activity.Visitor.Id}}",
-    "EmailRecipientId" =  "{{Activity.Field(EmailRecipientId)}}",
-    "AssetType" =  "{{Activity.Asset.Type}}",
-    "AssetName" =  "{{Activity.Asset.Name}}",
-    "AssetId" =  "{{Activity.Asset.Id}}",
-    "SubjectLine" =  "{{Activity.Field(SubjectLine)}}",
-    "EmailWebLink" =  "{{Activity.Field(EmailWebLink)}}",
-    "EmailClickedThruLink" =  "{{Activity.Field(EmailClickedThruLink)}}",
-    "VisitorExternalId" =  "{{Activity.Visitor.ExternalId}}",
-    "CampaignId" =  "{{Activity.Campaign.Id}}",
-    "ExternalId" = "{{Activity.ExternalId}}",
-    "EmailSendType" =  "{{Activity.Field(EmailSendType)}}"
-  ),
+     EmailClickthrough = list(
+
+          "ActivityId": "{{Activity.Id}}",
+          "ActivityType": "{{Activity.Type}}",
+          "ActivityDate": "{{Activity.CreatedAt}}",
+          "EmailAddress": "{{Activity.Field(EmailAddress)}}",
+          "ContactId": "{{Activity.Contact.Id}}",
+          "IpAddress": "{{Activity.Field(IpAddress)}}",
+          "VisitorId": "{{Activity.Visitor.Id}}",
+          "EmailRecipientId": "{{Activity.Field(EmailRecipientId)}}",
+          "AssetType": "{{Activity.Asset.Type}}",
+          "AssetName": "{{Activity.Asset.Name}}",
+          "AssetId": "{{Activity.Asset.Id}}",
+          "SubjectLine": "{{Activity.Field(SubjectLine)}}",
+          "EmailWebLink": "{{Activity.Field(EmailWebLink)}}",
+          "EmailClickedThruLink": "{{Activity.Field(EmailClickedThruLink)}}",
+          "VisitorExternalId": "{{Activity.Visitor.ExternalId}}",
+          "CampaignId": "{{Activity.Campaign.Id}}",
+          "ExternalId":"{{Activity.ExternalId}}",
+          "DeploymentId": "{{Activity.Field(EmailDeploymentId)}}",						
+          "EmailSendType": "{{Activity.Field(EmailSendType)}}"
+          
+          
+     ),
 
   Subscribe = list(
     "ActivityId" = "{{Activity.Id}}",
