@@ -1,6 +1,6 @@
 #' Create a set of authentication credentials required for Eloqua
 #'
-#' added comment
+#' added comment again
 #'
 #' @param pod The pod your Eloqua instance resides in (used to create the UIR string)
 #' @param company The company/name of your Eloqua instance
