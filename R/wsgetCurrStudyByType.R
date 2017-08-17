@@ -10,7 +10,7 @@ login <- myLogin
 currBulkFilter <- filters
 currEloquaType <- "EmailClickthrough"
 
-ws_getCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
+wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
 
 
   myExportDef <- defExport(login = myLogin, type = currEloquaType, bulkFilter = currBulkFilter,
