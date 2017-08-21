@@ -29,17 +29,17 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData$ActivityDate_DATE    <- lubridate::ymd_hms(myData$ActivityDate_DATE)
   myData$ActivityDate_INT     <- as.numeric(myData$ActivityDate_DATE)
   myData$UniqueString         <- as.numeric(paste(myData$ContactId,myData$ActivityDate_INT,sep = ""))
-  
+
   print(myData$UniqueString[1])
-  
-  
-  studyResults_DT <-  myData magrittr::%>% dplyr::group_by(ContactId) magrittr::%>% dplyr::slice(which.min(UniqueString))
+
+
+  studyResults_DT <-  myData %>% dplyr::group_by(ContactId) %>% dplyr::slice(which.min(UniqueString))
 
 
 studyResults_DT <- data.table::as.data.table(studyResults_DT)
-                    
+
 studyResults_DT <- data.table::as.data.table(dplyr::select(myDataSINGLE,ContactId,ActivityType,ActivityDate,CampaignId,AssetName, SubjectLine))
-  
+
   studyResults_DT$ContactId <- as.numeric(studyResults_DT$ContactId)
   data.table::setkey(studyResults_DT,ContactId)
 
