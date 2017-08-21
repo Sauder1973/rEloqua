@@ -30,6 +30,9 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData$ActivityDate_INT     <- as.numeric(myData$ActivityDate_DATE)
   myData$UniqueString         <- as.numeric(paste(myData$ContactId,myData$ActivityDate_INT,sep = ""))
   
+  print(myData$UniqueString[1])
+  
+  
   studyResults_DT <-  myData %>% 
                          dplyr::group_by(ContactId) %>% 
                          dplyr::slice(which.min(UniqueString))
