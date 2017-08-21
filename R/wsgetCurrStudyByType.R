@@ -33,9 +33,7 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   print(myData$UniqueString[1])
   
   
-  studyResults_DT <-  myData %>% 
-                         dplyr::group_by(ContactId) %>% 
-                         dplyr::slice(which.min(UniqueString))
+  studyResults_DT <-  myData magrittr::%>% dplyr::group_by(ContactId) magrittr::%>% dplyr::slice(which.min(UniqueString))
 
 
 studyResults_DT <- data.table::as.data.table(studyResults_DT)
