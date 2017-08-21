@@ -17,7 +17,9 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
                            exportName = "Test123 - EmailOPEN WES STUDY")
   mySync              <- syncExport(login = myLogin, exportDefinition = myExportDef) ## Sync data to the export
   myData              <- getExportData(login = myLogin, exportDefinition = myExportDef)  ## Get data from the export
-  myData              <- as.data.table(extractExportData(myData))
+  myData              <- extractExportData(myData)
+
+  myData              <- as.data.table(myData)
 
   myData <- myData[,.(ActivityId,ActivityType,ActivityDate,
                       ContactId, EmailAddress,AssetId,AssetName,SubjectLine)]
