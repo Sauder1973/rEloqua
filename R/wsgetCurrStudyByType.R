@@ -19,7 +19,7 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData              <- getExportData(login = myLogin, exportDefinition = myExportDef)  ## Get data from the export
   myData              <- extractExportData(myData)
 
-  myData              <- as.data.table(myData)
+  myData              <- data.table::as.data.table(myData)
 
   myData <- myData[,.(ActivityId,ActivityType,ActivityDate,
                       ContactId, EmailAddress,AssetId,AssetName,SubjectLine)]
