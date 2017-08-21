@@ -7,7 +7,7 @@ Depends: R (>= 3.2.0)
 License: MIT
 LazyData: true
 Imports: httr
-	data.table (>= 1.9.4)
+	data.table
 	dtplyr
 	RCurl
 	httr
