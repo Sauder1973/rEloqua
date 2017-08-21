@@ -6,9 +6,9 @@
 #' @param currEloquaType Type Include - PageView,WebVisit,FormSubmit,FormSubmitNoRaw,EmailSend,EmailOpen,EmailClickthrough,Subscribe,Unsubscribe,Bounceback
 #' @currBulkFilter Filter Used in the Study
 
-login <- myLogin
-currBulkFilter <- filters
-currEloquaType <- "EmailClickthrough"
+# login <- myLogin
+# currBulkFilter <- filters
+# currEloquaType <- "EmailClickthrough"
 
 wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
 
