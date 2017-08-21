@@ -19,24 +19,31 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData              <- getExportData(login = myLogin, exportDefinition = myExportDef)  ## Get data from the export
   myData              <- extractExportData(myData)
 
-  myData              <- data.table::as.data.table(myData)
+  myData              <- data.table::as.data.table(extractExportData(myData))
+  myData              <- dplyr::select(myData,ContactId,ActivityType,ActivityDate,CampaignId,AssetName, SubjectLine)
 
-  myData <- myData[,.(ActivityId,ActivityType,ActivityDate,
-                      ContactId, EmailAddress,AssetId,AssetName,SubjectLine)]
+  myData <- dplyr::select(myData,ActivityId,ActivityType,ActivityDate,
+                      ContactId, EmailAddress,AssetId,AssetName,SubjectLine)
 
   myData$ActivityDate_DATE <- substr(myData$ActivityDate,1,19)
   myData$ActivityDate_DATE <- gsub("-","/",myData$ActivityDate_DATE)
 
-  #myData$ActivityDate_ROUND <- substr(myData$ActivityDate_DATE,1,16)
-  myData$ActivityDate_DATE <- ymd_hms(myData$ActivityDate_DATE)
-  myData$ActivityDate_INT <- as.numeric(myData$ActivityDate_DATE)
-  myData$UniqueString <- as.numeric(paste(myData$ContactId,myData$ActivityDate_INT,sep = ""))
-  myDataSINGLE <- myData[myData[, .I[which.min(UniqueString)], by=ContactId]$V1]
+  #myData$ActivityDate_ROUND  <- substr(myData$ActivityDate_DATE,1,16)
+  myData$ActivityDate_DATE    <- lubridate::ymd_hms(myData$ActivityDate_DATE)
+  myData$ActivityDate_INT     <- as.numeric(myData$ActivityDate_DATE)
+  myData$UniqueString         <- as.numeric(paste(myData$ContactId,myData$ActivityDate_INT,sep = ""))
+  
+  studyResults_DT <-  myData %>% 
+                         dplyr::group_by(ContactId) %>% 
+                         dplyr::slice(which.min(UniqueString))
 
 
-  studyResults_DT <- as.data.table(myDataSINGLE[,.(ContactId,EmailAddress, ActivityType, ActivityDate) ])
+studyResults_DT <- data.table::as.data.table(studyResults_DT)
+                    
+studyResults_DT <- data.table::as.data.table(dplyr::select(myDataSINGLE,ContactId,ActivityType,ActivityDate,CampaignId,AssetName, SubjectLine))
+  
   studyResults_DT$ContactId <- as.numeric(studyResults_DT$ContactId)
-  setkey(studyResults_DT,ContactId)
+  data.table::setkey(studyResults_DT,ContactId)
 
   print("COMPLETED")
   return(studyResults_DT)
