@@ -22,9 +22,6 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData              <- data.table::as.data.table(myData)
   myData              <- dplyr::select(myData,ContactId,ActivityType,ActivityDate,CampaignId,AssetName, SubjectLine)
 
-  myData <- dplyr::select(myData,ActivityId,ActivityType,ActivityDate,
-                      ContactId, EmailAddress,AssetId,AssetName,SubjectLine)
-
   myData$ActivityDate_DATE <- substr(myData$ActivityDate,1,19)
   myData$ActivityDate_DATE <- gsub("-","/",myData$ActivityDate_DATE)
 
