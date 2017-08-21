@@ -6,10 +6,10 @@ Description: Automates Eloqua Bulk API export calls to bring data direct into R 
 Depends: R (>= 3.2.0)
 License: MIT
 LazyData: true
-Imports: httr
-	data.table
-	dtplyr
-	RCurl
+Imports: httr,
+	data.table,
+	dtplyr,
+	RCurl,
 	httr
 RoxygenNote: 6.0.1
 	
