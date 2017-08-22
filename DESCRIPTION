@@ -10,8 +10,6 @@ Imports: httr,
 	lubridate,
 	data.table,
 	dtplyr,
-	RCurl,
-	magrittr,
-	httr
+	RCurl
 RoxygenNote: 6.0.1
 	
