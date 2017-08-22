@@ -9,7 +9,7 @@ LazyData: true
 Imports: httr,
 	data.table,
 	dtplyr,
-	lubridate,
+	lubridate (>= 1.6.0),
 	RCurl
 RoxygenNote: 6.0.1
 	
