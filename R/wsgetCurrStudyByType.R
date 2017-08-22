@@ -26,7 +26,9 @@ wsgetCurrStudyByType <- function(login, currEloquaType, currBulkFilter){
   myData$ActivityDate_DATE <- gsub("-","/",myData$ActivityDate_DATE)
 
   #myData$ActivityDate_ROUND  <- substr(myData$ActivityDate_DATE,1,16)
-  myData$ActivityDate_DATE    <- lubridate::ymd_hms(myData$ActivityDate_DATE)
+  #myData$ActivityDate_DATE    <- lubridate::ymd_hms(myData$ActivityDate_DATE)
+  myData$ActivityDate_DATE    <- ymd_hms(myData$ActivityDate_DATE)
+  
   myData$ActivityDate_INT     <- as.numeric(myData$ActivityDate_DATE)
   myData$UniqueString         <- as.numeric(paste(myData$ContactId,myData$ActivityDate_INT,sep = ""))
 
